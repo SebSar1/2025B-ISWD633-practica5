@@ -10,7 +10,7 @@ services:
       MYSQL_USER: sebas
       MYSQL_PASSWORD: sebas
     volumes:
-      - "C:/Users/sebas/Escritorio/EPN/Universidad/sexto semestre/construccion y ev de software/ejercicioCompose/copia-contenedor-mysql:/var/lib/mysql"
+      - "C:/Users/sebas/OneDrive/Escritorio/EPN/Universidad/sexto semestre/construccion y ev de software/ejercicioCompose/copia-contenedor-mysql:/var/lib/mysql"
     networks:
       - net-wp
     healthcheck:
@@ -31,7 +31,7 @@ services:
       WORDPRESS_DB_PASSWORD: sebas
       WORDPRESS_DB_NAME: db_ejercicio
     volumes:
-      - "C:/Users/sebas/Escritorio/EPN/Universidad/sexto semestre/construccion y ev de software/ejercicioCompose/copia-contenedor-mysql:/var/lib/mysql"
+      - "C:/Users/sebas/OneDrive/Escritorio/EPN/Universidad/sexto semestre/construccion y ev de software/ejercicioCompose/copia-contenedor-mysql:/var/lib/mysql"
     networks:
       - net-wp
     healthcheck:
