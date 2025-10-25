@@ -27,6 +27,6 @@ Si solucionó un problema presentado al realizar la práctica también se debe d
 
 2. **Inicio de WordPress antes que MySQL**:
    WordPress fallaba al conectarse a la base de datos. Lo resolví usando `depends_on` con `condition: service_healthy` y configurando un healthcheck en MySQL.
-
+```
 docker exec -it contenedor-wordpress bash
 ```
