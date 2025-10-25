@@ -3,16 +3,16 @@ version: '3.8'
 services:
   mysql-service:
     image: mysql:8.4
-    container_name: <valor>
+    container_name: contenedor-mysql
     environment:
-      MYSQL_ROOT_PASSWORD: <valor>
-      MYSQL_DATABASE: <valor>
-      MYSQL_USER: <valor>
-      MYSQL_PASSWORD: <valor>
+      MYSQL_ROOT_PASSWORD: admin
+      MYSQL_DATABASE: db_ejercicio
+      MYSQL_USER: sebas
+      MYSQL_PASSWORD: sebas
     volumes:
-      - <valor>:<valor>
+      - "C:/Users/sebas/Escritorio/EPN/Universidad/sexto semestre/construccion y ev de software/ejercicioCompose/copia-contenedor-mysql:/var/lib/mysql"
     networks:
-      - <valor>
+      - net-wp
     healthcheck:
       test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
       interval: 20s
@@ -22,28 +22,28 @@ services:
 
   wordpress-service:
     image: wordpress:6
-    container_name: <valor>
+    container_name: contenedor-wordpress
     ports:
-      - <valor>:<valor>
+      - 8080:80
     environment:
-      WORDPRESS_DB_HOST: <valor>
-      WORDPRESS_DB_USER: <valor>
-      WORDPRESS_DB_PASSWORD: <valor>
-      WORDPRESS_DB_NAME: <valor>
+      WORDPRESS_DB_HOST: mysql-service
+      WORDPRESS_DB_USER: sebas
+      WORDPRESS_DB_PASSWORD: sebas
+      WORDPRESS_DB_NAME: db_ejercicio
     volumes:
-      - <valor>:<valor>
+      - "C:/Users/sebas/Escritorio/EPN/Universidad/sexto semestre/construccion y ev de software/ejercicioCompose/copia-contenedor-mysql:/var/lib/mysql"
     networks:
-      - <valor>
+      - net-wp
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost"]
       interval: 20s
       timeout: 20s
       retries: 10
       start_period: 50s
-    restart: <valor>
+    restart: always
     depends_on:
       mysql-service:
-        condition: <valor>
+        condition: service_healthy
 volumes:
   mysql-data:
   wordpress-vol:
